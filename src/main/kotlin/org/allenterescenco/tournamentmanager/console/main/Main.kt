@@ -1,6 +1,11 @@
+package org.allenterescenco.tournamentmanager.console.main
+
 import mu.KotlinLogging
+import org.allenterescenco.tournamentmanager.console.models.TournamentModel
 
 private val logger = KotlinLogging.logger {}
+
+val tournaments = ArrayList<TournamentModel>()
 
 fun main(args: Array<String>) {
     logger.info { "Launching Tournament Bracket Manager Console App" }
@@ -33,8 +38,8 @@ fun menu() : Int {
 
     println("Main Menu")
     println(" 1. View Tournaments")
-    println(" 2. Create Tournaments")
-    println(" 3. Delete Tournaments")
+    println(" 2. Create a Tournament")
+    println(" 3. Delete a Tournament")
     println(" ----------------------- ")
     println(" 4. View Teams")
     println(" 5. Add Teams")
@@ -53,11 +58,29 @@ fun menu() : Int {
 }
 
 fun addTournament() {
+    var tempTournament = TournamentModel()
     println("You Chose To Create a Tournament")
+
+
+    print("Tournament Name: ")
+    tempTournament.name = readLine()!!
+    print("Tournament Organiser: ")
+    tempTournament.org = readLine()!!
+    print("${tempTournament.name}'s Starting Date: ")
+    tempTournament.startDate = readLine()!!
+    print("${tempTournament.name}'s Ending Date: ")
+    tempTournament.endDate = readLine()!!
+    print("Max Teams: ")
+    tempTournament.maxTeams = readLine()!!.toInt()
+
+    println("Tournament: ${tempTournament.name} has been added")
+    tempTournament.id = tournaments.size.toLong()
+    tournaments.add(tempTournament.copy())
 }
 
 fun listTournaments() {
     println("You Chose To View Tournaments")
+    tournaments.forEach { logger.info("${it}") }
 }
 
 fun deleteTournament() {
@@ -78,4 +101,32 @@ fun updateTeam() {
 
 fun deleteTeam() {
     println("You Chose To Delete a Team")
+}
+
+fun searchTournaments() {
+
+    var searchId = getId()
+    val tempTournament = search(searchId)
+
+    if(tempTournament != null)
+        println("Placemark Details [ $tempTournament ]")
+    else
+        println("Placemark Not Found...")
+}
+
+fun getId() : Long {
+    var strId : String? // String to hold user input
+    var searchId : Long // Long to hold converted id
+    print("Enter id to Search/Update : ")
+    strId = readLine()!!
+    searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
+        strId.toLong()
+    else
+        -9
+    return searchId
+}
+
+fun search(id: Long) : TournamentModel? {
+    var foundTournament: TournamentModel? = tournaments.find { p -> p.id == id }
+    return foundTournament
 }
