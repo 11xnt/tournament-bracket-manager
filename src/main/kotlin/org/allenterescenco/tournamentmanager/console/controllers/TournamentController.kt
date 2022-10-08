@@ -13,8 +13,8 @@ class TournamentController {
     val logger = KotlinLogging.logger {}
 
     init {
-        logger.info { "Launching Placemark Console App" }
-        println("Placemark Kotlin App Version 1.0")
+        logger.info { "Launching Tournament Manager Console App" }
+        println("Tournament Kotlin App Version 1.0")
     }
 
     fun start() {
@@ -33,7 +33,7 @@ class TournamentController {
             }
             println()
         } while (input != -1)
-        logger.info { "Shutting Down Placemark Console App" }
+        logger.info { "Shutting Down Tournament Manager Console App" }
     }
 
     fun menu() :Int { return tournamentView.menu() }
@@ -61,13 +61,13 @@ class TournamentController {
             if(tournamentView.updateTournamentData(tempTournament)) {
                 tournaments.update(tempTournament)
                 tournamentView.showTournament(tempTournament)
-                logger.info("Placemark Updated : [ $tempTournament ]")
+                logger.info("Tournament Updated : [ $tempTournament ]")
             }
             else
-                logger.info("Placemark Not Updated")
+                logger.info("Tournament Not Updated")
         }
         else
-            println("Placemark Not Updated...")
+            println("Tournament Not Updated...")
     }
 
     fun search() {
@@ -82,8 +82,8 @@ class TournamentController {
     }
 
     fun dummyData() {
-        tournaments.create(TournamentModel(name = "New York New York", org = "So Good They Named It Twice"))
-        tournaments.create(TournamentModel(name= "Ring of Kerry", org = "Some place in the Kingdom"))
-        tournaments.create(TournamentModel(name = "Waterford City", org = "You get great Blaas Here!!"))
+        tournaments.create(TournamentModel(name = "Pro League", org = "Pro Org"))
+        tournaments.create(TournamentModel(name= "Inter League", org = "Inter Org"))
+        tournaments.create(TournamentModel(name = "Rookie League", org = "Rookie Org", ))
     }
 }
