@@ -10,7 +10,7 @@ class TournamentView {
         var option : Int
         var input: String?
 
-        println("MAIN MENU")
+        println("TOURNAMENT MAIN MENU")
         println(" 1. Add Tournament")
         println(" 2. Update a Tournament")
         println(" 3. List All Tournaments")
@@ -43,12 +43,22 @@ class TournamentView {
     fun addTournamentData(tournament : TournamentModel) : Boolean {
 
         println()
-        print("Enter a Title : ")
+        print("Enter a Name : ")
         tournament.name = readLine()!!
-        print("Enter a Description : ")
+        print("Enter an Organiser : ")
         tournament.org = readLine()!!
+        print("Enter the Starting Date : ")
+        tournament.startDate = readLine()!!
+        print("Enter the Ending Date : ")
+        tournament.endDate = readLine()!!
+        print("Enter the Max Teams : ")
+        tournament.maxTeams = readln().toInt()
 
-        return tournament.name.isNotEmpty() && tournament.org.isNotEmpty()
+        return tournament.name.isNotEmpty() &&
+                tournament.org.isNotEmpty() &&
+                tournament.startDate.isNotEmpty() &&
+                tournament.endDate.isNotEmpty() &&
+                tournament.maxTeams > 0
     }
 
     fun updateTournamentData(tournament : TournamentModel) : Boolean {

@@ -33,6 +33,9 @@ class TournamentMemStore : TournamentStore {
         if (foundTournament != null) {
             foundTournament.name = tournament.name
             foundTournament.org = tournament.org
+            foundTournament.startDate = tournament.startDate
+            foundTournament.endDate = tournament.endDate
+            foundTournament.maxTeams = tournament.maxTeams
         }
     }
 
