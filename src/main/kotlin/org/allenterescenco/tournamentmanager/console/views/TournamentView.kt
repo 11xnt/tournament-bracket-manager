@@ -47,8 +47,18 @@ class TournamentView {
         tournament.name = readLine()!!
         print("Enter an Organiser : ")
         tournament.org = readLine()!!
+        print("Enter the Starting Date : ")
+        tournament.startDate = readLine()!!
+        print("Enter the Ending Date : ")
+        tournament.endDate = readLine()!!
+        print("Enter the Max Teams : ")
+        tournament.maxTeams = readln().toInt()
 
-        return tournament.name.isNotEmpty() && tournament.org.isNotEmpty()
+        return tournament.name.isNotEmpty() &&
+                tournament.org.isNotEmpty() &&
+                tournament.startDate.isNotEmpty() &&
+                tournament.endDate.isNotEmpty() &&
+                tournament.maxTeams > 0
     }
 
     fun updateTournamentData(tournament : TournamentModel) : Boolean {

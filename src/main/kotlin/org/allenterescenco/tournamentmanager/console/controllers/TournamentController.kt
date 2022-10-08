@@ -44,7 +44,7 @@ class TournamentController {
         if (tournamentView.addTournamentData(tempTournament))
             tournaments.create(tempTournament)
         else
-            logger.info("Placemark Not Added")
+            logger.info("Tournament Not Added")
     }
 
     fun list() {
