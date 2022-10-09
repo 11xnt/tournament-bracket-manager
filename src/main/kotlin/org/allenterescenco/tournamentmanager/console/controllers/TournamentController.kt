@@ -82,8 +82,26 @@ class TournamentController {
     }
 
     fun dummyData() {
-        tournaments.create(TournamentModel(name = "Pro League", org = "Pro Org"))
-        tournaments.create(TournamentModel(name= "Inter League", org = "Inter Org"))
-        tournaments.create(TournamentModel(name = "Rookie League", org = "Rookie Org", ))
+        tournaments.create(TournamentModel(name = "Pro League",
+            org = "Pro Org",
+            startDate = "11/06/2022",
+            endDate = "15/06/2022",
+            maxTeams = 64,
+            partTeams = arrayOf("Team1", "Team2"),
+            winner = "Team1"))
+        tournaments.create(TournamentModel(name = "Inter League",
+            org = "Inter Org",
+            startDate = "25/10/2022",
+            endDate = "28/10/2022",
+            maxTeams = 2,
+            partTeams = arrayOf("Team1", "Team2"),
+            winner = ""))
+        tournaments.create(TournamentModel(name = "Rookie League",
+            org = "Rookie Org",
+            startDate = "25/07/2022",
+            endDate = "28/07/2022",
+            maxTeams = 32,
+            partTeams = arrayOf("Team1", "Team2"),
+            winner = "Team1"))
     }
 }
