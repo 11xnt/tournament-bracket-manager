@@ -33,7 +33,7 @@ class TournamentController {
             }
             println()
         } while (input != -1)
-        logger.info { "Shutting Down Tournament Manager Console App" }
+        logger.info { "Shutting Down Tournament Manager Tournament Console App" }
     }
 
     fun menu() :Int { return tournamentView.menu() }

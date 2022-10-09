@@ -35,7 +35,7 @@ class TeamView {
         println()
     }
 
-    fun showTeams(team : TeamModel) {
+    fun showTeam(team : TeamModel) {
         if(team != null)
             println("Team Details [ $team ]")
         else
