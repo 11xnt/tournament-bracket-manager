@@ -86,21 +86,21 @@ class TeamController {
             TeamModel(name = "Team Red",
                 wins = 3,
                 losses = 0,
-                winPercentage = 100.00,
+                winPercentage = 100,
                 players = arrayOf("Player2", "Player1"))
         )
         teams.create(
             TeamModel(name = "Team Blue",
                 wins = 2,
                 losses = 1,
-                winPercentage = 66.66,
+                winPercentage = 66,
                 players = arrayOf("Player18", "Player4"))
         )
         teams.create(
             TeamModel(name = "Team Green",
                 wins = 0,
                 losses = 3,
-                winPercentage = 0.00,
+                winPercentage = 0,
                 players = arrayOf("Player6", "Player3"))
         )
     }

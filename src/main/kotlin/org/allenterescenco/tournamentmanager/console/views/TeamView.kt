@@ -2,8 +2,6 @@ package org.allenterescenco.tournamentmanager.console.views
 
 import org.allenterescenco.tournamentmanager.console.models.team.TeamMemStore
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
-import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentMemStore
-import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentModel
 
 class TeamView {
 
@@ -51,7 +49,7 @@ class TeamView {
         team.wins = readln().toInt()
         print("Enter their number of losses : ")
         team.losses = readln().toInt()
-        team.winPercentage = ((team.wins / (team.wins + team.losses))*100).toDouble()
+        team.winPercentage = ((team.wins.toDouble() / (team.wins+team.losses))*100).toInt()
         print("Enter the Team's players : ")
 //        team.players = readLine()
 
@@ -81,7 +79,7 @@ class TeamView {
                 team.name = tempName
                 team.wins = tempWins
                 team.losses = tempLosses
-                team.winPercentage = ((tempWins/tempWins+tempLosses)*100).toDouble()
+                team.winPercentage = ((team.wins.toDouble() / (team.wins+team.losses))*100).toInt()
                 // team.players = tempPlayers
                 return true
             }

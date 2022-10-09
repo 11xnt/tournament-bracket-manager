@@ -6,7 +6,7 @@ private val logger = KotlinLogging.logger {}
 var lastId = 0L
 
 internal fun getId(): Long {
-    return org.allenterescenco.tournamentmanager.console.models.tournament.lastId++
+    return lastId++
 }
 
 class TeamMemStore : TeamStore {
@@ -23,7 +23,7 @@ class TeamMemStore : TeamStore {
     }
 
     override fun create(team: TeamModel) {
-        team.id = org.allenterescenco.tournamentmanager.console.models.team.getId()
+        team.id = getId()
         teams.add(team)
         logAll()
     }
@@ -40,6 +40,6 @@ class TeamMemStore : TeamStore {
     }
 
     internal fun logAll() {
-        teams.forEach { org.allenterescenco.tournamentmanager.console.models.team.logger.info("${it}") }
+        teams.forEach { logger.info("${it}") }
     }
 }
