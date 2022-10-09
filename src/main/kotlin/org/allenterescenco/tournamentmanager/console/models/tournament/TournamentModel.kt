@@ -1,4 +1,4 @@
-package org.allenterescenco.tournamentmanager.console.models
+package org.allenterescenco.tournamentmanager.console.models.tournament
 
 data class TournamentModel(var id: Long = 0,
                            var name: String = "",
