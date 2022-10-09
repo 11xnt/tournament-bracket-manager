@@ -1,4 +1,4 @@
-package org.allenterescenco.tournamentmanager.console.models
+package org.allenterescenco.tournamentmanager.console.models.tournament
 
 interface TournamentStore {
     fun findAll(): List<TournamentModel>

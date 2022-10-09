@@ -1,7 +1,7 @@
 package org.allenterescenco.tournamentmanager.console.views
 
-import org.allenterescenco.tournamentmanager.console.models.TournamentMemStore
-import org.allenterescenco.tournamentmanager.console.models.TournamentModel
+import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentMemStore
+import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentModel
 
 class TournamentView {
 
