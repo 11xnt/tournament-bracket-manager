@@ -1,6 +1,7 @@
 package org.allenterescenco.tournamentmanager.console.controllers
 
 import mu.KotlinLogging
+import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
 
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentMemStore
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentModel
@@ -88,8 +89,8 @@ class TournamentController {
             startDate = "11/06/2022",
             endDate = "15/06/2022",
             maxTeams = 64,
-            partTeams = arrayOf("Team1", "Team2"),
-            winner = "Team1")
+            partTeams = arrayListOf(TeamModel(1, "Team 1"), TeamModel(2, "Team 2")),
+            winner = TeamModel(1, "Team 1"))
         )
         tournaments.create(
             TournamentModel(name = "Inter League",
@@ -97,8 +98,8 @@ class TournamentController {
             startDate = "25/10/2022",
             endDate = "28/10/2022",
             maxTeams = 2,
-            partTeams = arrayOf("Team1", "Team2"),
-            winner = "")
+            partTeams = arrayListOf(TeamModel(1, "Team 1"), TeamModel(2, "Team 2")),
+            winner = TeamModel(1, "Team 1"))
         )
         tournaments.create(
             TournamentModel(name = "Rookie League",
@@ -106,8 +107,8 @@ class TournamentController {
             startDate = "25/07/2022",
             endDate = "28/07/2022",
             maxTeams = 32,
-            partTeams = arrayOf("Team1", "Team2"),
-            winner = "Team1")
+            partTeams = arrayListOf(TeamModel(1, "Team 1"), TeamModel(2, "Team 2")),
+            winner = TeamModel(1, "Team 1"))
         )
     }
 }

@@ -29,7 +29,12 @@ class TournamentView {
     fun listTournaments(tournaments : TournamentMemStore) {
         println("List All Tournaments")
         println()
-        tournaments.logAll()
+        val foundTournaments = tournaments.findAll()
+        var i = 0;
+        for (tournament in foundTournaments) {
+            println("${i}. ${tournament.name}")
+            i++
+        }
         println()
     }
 

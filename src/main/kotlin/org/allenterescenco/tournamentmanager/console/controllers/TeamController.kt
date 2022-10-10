@@ -1,6 +1,7 @@
 package org.allenterescenco.tournamentmanager.console.controllers
 
 import mu.KotlinLogging
+import org.allenterescenco.tournamentmanager.console.models.player.PlayerModel
 
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
 import org.allenterescenco.tournamentmanager.console.models.team.TeamMemStore
@@ -27,6 +28,7 @@ class TeamController {
                 2 -> update()
                 3 -> list()
                 4 -> search()
+                5 -> addPlayerToTeam()
                 -99 -> dummyData()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
@@ -81,27 +83,31 @@ class TeamController {
         return foundTeam
     }
 
+    fun addPlayerToTeam() {
+        teamView.listTeams(teams)
+    }
+
     fun dummyData() {
         teams.create(
             TeamModel(name = "Team Red",
                 wins = 3,
                 losses = 0,
                 winPercentage = 100,
-                players = arrayOf("Player2", "Player1"))
+                players = arrayListOf(PlayerModel(), PlayerModel()))
         )
         teams.create(
             TeamModel(name = "Team Blue",
                 wins = 2,
                 losses = 1,
                 winPercentage = 66,
-                players = arrayOf("Player18", "Player4"))
+                players = arrayListOf(PlayerModel(), PlayerModel()))
         )
         teams.create(
             TeamModel(name = "Team Green",
                 wins = 0,
                 losses = 3,
                 winPercentage = 0,
-                players = arrayOf("Player6", "Player3"))
+                players = arrayListOf(PlayerModel(), PlayerModel()))
         )
     }
 }

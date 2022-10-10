@@ -86,19 +86,19 @@ class PlayerController {
         players.create(
             PlayerModel(fullName = "Paul Green",
                 dOB = "21/08/2001",
-                playsFor = TeamModel(99,"Team Blue", 2,1, 66, arrayOf(""))
+                playsFor = TeamModel(99,"Team Blue", 2,1, 66, arrayListOf())
             )
         )
         players.create(
             PlayerModel(fullName = "Todd Howard",
                 dOB = "15/07/1999",
-                playsFor = TeamModel(99,"Team Red", 2,1, 66, arrayOf(""))
+                playsFor = TeamModel(99,"Team Red", 2,1, 66, arrayListOf())
             )
         )
         players.create(
             PlayerModel(fullName = "Jim Jones",
                 dOB = "10/06/2000",
-                playsFor = TeamModel(99,"Team Green", 2,1, 66, arrayOf(""))
+                playsFor = TeamModel(99,"Team Green", 2,1, 66, arrayListOf())
             )
         )
     }

@@ -15,6 +15,7 @@ class TeamView {
         println(" 2. Update a Team")
         println(" 3. List All Teams")
         println(" 4. Search Teams")
+        println(" 5. Add Player to a Team")
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -29,7 +30,12 @@ class TeamView {
     fun listTeams(teams : TeamMemStore) {
         println("List All Teams")
         println()
-        teams.logAll()
+        val foundTeams = teams.findAll()
+        var i = 0;
+        for (team in foundTeams) {
+            println("${i}. ${team.name}")
+            i++
+        }
         println()
     }
 
