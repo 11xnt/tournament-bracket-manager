@@ -1,6 +1,7 @@
 package org.allenterescenco.tournamentmanager.console.views
 
-import org.allenterescenco.tournamentmanager.console.models.team.TeamMemStore
+import org.allenterescenco.tournamentmanager.console.models.player.PlayerMemStore
+import org.allenterescenco.tournamentmanager.console.models.player.PlayerModel
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
 
 class PlayerView {
@@ -10,11 +11,11 @@ class PlayerView {
         var option : Int
         var input: String?
 
-        println("TEAM MAIN MENU")
-        println(" 1. Add a Team")
-        println(" 2. Update a Team")
-        println(" 3. List All Teams")
-        println(" 4. Search Teams")
+        println("PLAYER MAIN MENU")
+        println(" 1. Add a Player")
+        println(" 2. Update a Player")
+        println(" 3. List All Players")
+        println(" 4. Search Players")
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -26,61 +27,54 @@ class PlayerView {
         return option
     }
 
-    fun listTeams(teams : TeamMemStore) {
-        println("List All Teams")
+    fun listPlayers(players : PlayerMemStore) {
+        println("List All Players")
         println()
-        teams.logAll()
+        players.logAll()
         println()
     }
 
-    fun showTeam(team : TeamModel) {
-        if(team != null)
-            println("Team Details [ $team ]")
+    fun showPlayer(player : PlayerModel) {
+        if(player != null)
+            println("Team Details [ $player ]")
         else
             println("Team Not Found...")
     }
 
-    fun addTeamData(team : TeamModel) : Boolean {
+    fun addPlayerData(player : PlayerModel) : Boolean {
 
         println()
-        print("Enter a Name : ")
-        team.name = readLine()!!
-        print("Enter their number of wins : ")
-        team.wins = readln().toInt()
-        print("Enter their number of losses : ")
-        team.losses = readln().toInt()
-        team.winPercentage = ((team.wins.toDouble() / (team.wins+team.losses))*100).toInt()
-        print("Enter the Team's players : ")
-//        team.players = readLine()
+        print("Enter a Full Name : ")
+        player.fullName = readLine()!!
+        print("Enter their Date of Birth : ")
+        player.dOB = readLine()!!
+        print("Choose who they play for: ")
+        player.playsFor = TeamModel()
 
-        return team.name.isNotEmpty() &&
-                team.wins >= 0 &&
-                team.losses >= 0 &&
-                team.winPercentage >= 0
+        return player.fullName.isNotEmpty() &&
+                player.dOB.isNullOrEmpty() &&
+                player.playsFor != null
     }
 
-    fun updateTeamData(team : TeamModel) : Boolean {
+    fun updatePlayerData(player : PlayerModel) : Boolean {
 
-        val tempName: String?
-        val tempWins: Int
-        val tempLosses: Int
-        // tempPlayers
+        val tempFullName: String?
+        val tempDOB: String?
+        val tempPlaysFor: TeamModel?
 
 
-        if (team != null) {
-            print("Enter a new Name for [ " + team.name + " ] : ")
-            tempName = readLine()!!
-            print("Enter a new win total for [ " + team.wins + " ] : ")
-            tempWins = readln().toInt()
-            print("Enter a new win total for [ " + team.losses + " ] : ")
-            tempLosses = readln().toInt()
+        if (player != null) {
+            print("Enter a new Name for [ " + player.fullName + " ] : ")
+            tempFullName = readLine()!!
+            print("Enter a new win total for [ " + player.dOB + " ] : ")
+            tempDOB = readLine()!!
+            print("Enter a new win total for [ " + player.playsFor + " ] : ")
+            tempPlaysFor = TeamModel(0,"Default Team",0,0,0, arrayOf(""))
 
-            if (!tempName.isNullOrEmpty() && tempWins >= 0 && tempLosses >= 0) {
-                team.name = tempName
-                team.wins = tempWins
-                team.losses = tempLosses
-                team.winPercentage = ((team.wins.toDouble() / (team.wins+team.losses))*100).toInt()
-                // team.players = tempPlayers
+            if (!tempFullName.isNullOrEmpty() && !tempDOB.isNullOrEmpty() && tempPlaysFor != null) {
+                player.fullName = tempFullName
+                player.dOB = tempDOB
+                player.playsFor = tempPlaysFor
                 return true
             }
         }
