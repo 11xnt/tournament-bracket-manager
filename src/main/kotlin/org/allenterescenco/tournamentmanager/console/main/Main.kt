@@ -1,8 +1,10 @@
 package org.allenterescenco.tournamentmanager.console.main
 
 import mu.KotlinLogging
+import org.allenterescenco.tournamentmanager.console.controllers.PlayerController
 import org.allenterescenco.tournamentmanager.console.controllers.TournamentController
 import org.allenterescenco.tournamentmanager.console.controllers.TeamController
+
 private val logger = KotlinLogging.logger {}
 
 fun main(args: Array<String>) {
@@ -17,6 +19,7 @@ fun start() {
         when (input) {
             1 -> TournamentController().start()
             2 -> TeamController().start()
+            3 -> PlayerController().start()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
         }
@@ -33,6 +36,7 @@ fun menu() : Int {
     println("MAIN MENU")
     println(" 1. Enter Tournament Menu")
     println(" 2. Enter Team Menu")
+    println(" 3. Enter Player Menu")
     println("-1. Exit")
     println()
     print("Enter Option : ")
