@@ -30,7 +30,12 @@ class PlayerView {
     fun listPlayers(players : PlayerMemStore) {
         println("List All Players")
         println()
-        players.logAll()
+        val foundPlayers = players.findAll()
+        var i = 0;
+        for (player in foundPlayers) {
+            println("${i}. ${player.fullName}")
+            i++
+        }
         println()
     }
 
@@ -69,7 +74,7 @@ class PlayerView {
             print("Enter a new win total for [ " + player.dOB + " ] : ")
             tempDOB = readLine()!!
             print("Enter a new win total for [ " + player.playsFor + " ] : ")
-            tempPlaysFor = TeamModel(0,"Default Team",0,0,0, arrayOf(""))
+            tempPlaysFor = TeamModel(0,"Default Team",0,0,0, arrayListOf())
 
             if (!tempFullName.isNullOrEmpty() && !tempDOB.isNullOrEmpty() && tempPlaysFor != null) {
                 player.fullName = tempFullName
