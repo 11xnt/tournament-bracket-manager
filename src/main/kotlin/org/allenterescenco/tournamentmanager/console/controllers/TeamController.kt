@@ -85,25 +85,36 @@ class TeamController {
 
     fun addPlayerToTeam() {
         teamView.listTeams(teams)
+
+        teamView.listTeams(teams)
+        val searchId = teamView.getId()
+        val tempTeam = search(searchId)
+
+        if(tempTeam != null) {
+
+        }
     }
 
     fun dummyData() {
         teams.create(
-            TeamModel(name = "Team Red",
+            TeamModel(id = 1,
+                name = "Team Red",
                 wins = 3,
                 losses = 0,
                 winPercentage = 100,
                 players = arrayListOf(PlayerModel(), PlayerModel()))
         )
         teams.create(
-            TeamModel(name = "Team Blue",
+            TeamModel(id = 2,
+                name = "Team Blue",
                 wins = 2,
                 losses = 1,
                 winPercentage = 66,
                 players = arrayListOf(PlayerModel(), PlayerModel()))
         )
         teams.create(
-            TeamModel(name = "Team Green",
+            TeamModel(id = 3,
+                name = "Team Green",
                 wins = 0,
                 losses = 3,
                 winPercentage = 0,
