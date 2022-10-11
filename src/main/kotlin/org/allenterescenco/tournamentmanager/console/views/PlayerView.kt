@@ -33,7 +33,7 @@ class PlayerView {
         val foundPlayers = players.findAll()
         var i = 0;
         for (player in foundPlayers) {
-            println("${i}. ${player.fullName}")
+            println("${i}. ${player.fullName} - ID: ${player.id}")
             i++
         }
         println()
