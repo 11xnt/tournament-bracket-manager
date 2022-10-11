@@ -18,7 +18,7 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class TournamentJSONStore : PlayerStore {
+class PlayerJSONStore : PlayerStore {
 
     var players = mutableListOf<PlayerModel>()
 

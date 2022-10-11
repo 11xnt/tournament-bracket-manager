@@ -2,14 +2,14 @@ package org.allenterescenco.tournamentmanager.console.controllers
 
 import mu.KotlinLogging
 import org.allenterescenco.tournamentmanager.console.models.player.PlayerModel
+import org.allenterescenco.tournamentmanager.console.models.team.TeamJSONStore
 
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
-import org.allenterescenco.tournamentmanager.console.models.team.TeamMemStore
 import org.allenterescenco.tournamentmanager.console.views.TeamView
 
 class TeamController {
 
-    val teams = TeamMemStore()
+    val teams = TeamJSONStore()
     val teamView = TeamView()
     val logger = KotlinLogging.logger {}
 

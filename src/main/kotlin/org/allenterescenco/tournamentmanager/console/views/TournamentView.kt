@@ -1,6 +1,6 @@
 package org.allenterescenco.tournamentmanager.console.views
 
-import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentMemStore
+import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentJSONStore
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentModel
 
 class TournamentView {
@@ -26,15 +26,16 @@ class TournamentView {
         return option
     }
 
-    fun listTournaments(tournaments : TournamentMemStore) {
+    fun listTournaments(tournaments: TournamentJSONStore) {
         println("List All Tournaments")
         println()
-        val foundTournaments = tournaments.findAll()
-        var i = 0;
-        for (tournament in foundTournaments) {
-            println("${i}. ${tournament.name}")
-            i++
-        }
+//        val foundTournaments = tournaments.findAll()
+//        var i = 0;
+//        for (tournament in foundTournaments) {
+//            println("${i}. ${tournament.name}")
+//            i++
+//        }
+        tournaments.logAll()
         println()
     }
 
