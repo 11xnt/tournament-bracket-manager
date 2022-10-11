@@ -1,11 +1,12 @@
 package org.allenterescenco.tournamentmanager.console.views
 
-import org.allenterescenco.tournamentmanager.console.models.team.TeamMemStore
+import org.allenterescenco.tournamentmanager.console.models.player.PlayerJSONStore
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
 import org.allenterescenco.tournamentmanager.console.models.player.PlayerModel
-import org.allenterescenco.tournamentmanager.console.models.player.PlayerMemStore
+import org.allenterescenco.tournamentmanager.console.models.team.TeamJSONStore
+import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentJSONStore
 
-val players = PlayerMemStore()
+val players = PlayerJSONStore()
 val playerView = PlayerView()
 
 class TeamView {
@@ -31,15 +32,10 @@ class TeamView {
         return option
     }
 
-    fun listTeams(teams : TeamMemStore) {
+    fun listTeams(teams: TeamJSONStore) {
         println("List All Teams")
         println()
-        val foundTeams = teams.findAll()
-        var i = 0;
-        for (team in foundTeams) {
-            println("${i}. ${team.name} ID=${team.id}")
-            i++
-        }
+        teams.logAll()
         println()
     }
 
