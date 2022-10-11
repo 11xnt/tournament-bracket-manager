@@ -1,7 +1,13 @@
 package org.allenterescenco.tournamentmanager.console.views
 
-import org.allenterescenco.tournamentmanager.console.models.team.TeamJSONStore
+import org.allenterescenco.tournamentmanager.console.models.player.PlayerJSONStore
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
+import org.allenterescenco.tournamentmanager.console.models.player.PlayerModel
+import org.allenterescenco.tournamentmanager.console.models.team.TeamJSONStore
+import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentJSONStore
+
+val players = PlayerJSONStore()
+val playerView = PlayerView()
 
 class TeamView {
 
@@ -15,7 +21,6 @@ class TeamView {
         println(" 2. Update a Team")
         println(" 3. List All Teams")
         println(" 4. Search Teams")
-        println(" 5. Add Player to a Team")
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -30,12 +35,6 @@ class TeamView {
     fun listTeams(teams: TeamJSONStore) {
         println("List All Teams")
         println()
-//        val foundTeams = teams.findAll()
-//        var i = 0;
-//        for (team in foundTeams) {
-//            println("${i}. ${team.name}")
-//            i++
-//        }
         teams.logAll()
         println()
     }
@@ -49,6 +48,8 @@ class TeamView {
 
     fun addTeamData(team : TeamModel) : Boolean {
 
+        val tempPlayers: ArrayList<PlayerModel> = arrayListOf()
+
         println()
         print("Enter a Name : ")
         team.name = readLine()!!
@@ -57,13 +58,28 @@ class TeamView {
         print("Enter their number of losses : ")
         team.losses = readln().toInt()
         team.winPercentage = ((team.wins.toDouble() / (team.wins+team.losses))*100).toInt()
-        print("Enter the Team's players : ")
-//        team.players = readLine()
+
+        println("Choose a players to add to the team for [ " + team.name + " ] : ")
+        println("How many players do you wish to add? : ")
+
+        val tempNumOfPlayers: Int? = readLine()?.toInt()
+
+        for (i in 0..tempNumOfPlayers!!) {
+            playerView.listPlayers(players)
+            val searchId = playerView.getId()
+            val chosenTeam = search(searchId)
+            if (chosenTeam != null) {
+                tempPlayers.add(chosenTeam)
+            }
+        }
+
+        team.players = tempPlayers
 
         return team.name.isNotEmpty() &&
                 team.wins >= 0 &&
                 team.losses >= 0 &&
-                team.winPercentage >= 0
+                team.winPercentage >= 0 &&
+                team.players.isNotEmpty()
     }
 
     fun updateTeamData(team : TeamModel) : Boolean {
@@ -71,7 +87,7 @@ class TeamView {
         val tempName: String?
         val tempWins: Int
         val tempLosses: Int
-        // tempPlayers
+        val tempPlayers: ArrayList<PlayerModel> = arrayListOf()
 
 
         if (team != null) {
@@ -82,16 +98,37 @@ class TeamView {
             print("Enter a new win total for [ " + team.losses + " ] : ")
             tempLosses = readln().toInt()
 
+            println("Choose a players to add to the team for [ " + team.name + " ] : ")
+            println("How many players do you wish to add? : ")
+
+            val tempNumOfPlayers: Int? = readLine()?.toInt()
+
+            for (i in 0..tempNumOfPlayers!!) {
+                playerView.listPlayers(players)
+                val searchId = playerView.getId()
+                val chosenTeam = search(searchId)
+                if (chosenTeam != null) {
+                    tempPlayers.add(chosenTeam)
+                }
+            }
+
+            team.players = tempPlayers
+
             if (!tempName.isNullOrEmpty() && tempWins >= 0 && tempLosses >= 0) {
                 team.name = tempName
                 team.wins = tempWins
                 team.losses = tempLosses
                 team.winPercentage = ((team.wins.toDouble() / (team.wins+team.losses))*100).toInt()
-                // team.players = tempPlayers
+                team.players = tempPlayers
                 return true
             }
         }
         return false
+    }
+
+    fun search(id: Long) : PlayerModel? {
+        val foundPlayer = players.findOne(id)
+        return foundPlayer
     }
 
     fun getId() : Long {

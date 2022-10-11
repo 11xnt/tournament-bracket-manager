@@ -30,12 +30,6 @@ class PlayerView {
     fun listPlayers(players: PlayerJSONStore) {
         println("List All Players")
         println()
-//        val foundPlayers = players.findAll()
-//        var i = 0;
-//        for (player in foundPlayers) {
-//            println("${i}. ${player.fullName}")
-//            i++
-//        }
         players.logAll()
         println()
     }
