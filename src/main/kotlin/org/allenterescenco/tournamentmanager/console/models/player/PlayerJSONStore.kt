@@ -6,6 +6,8 @@ import com.google.gson.reflect.TypeToken
 import mu.KotlinLogging
 
 import org.allenterescenco.tournamentmanager.console.helpers.*
+import org.allenterescenco.tournamentmanager.console.main.ANSI_BLUE
+import org.allenterescenco.tournamentmanager.console.main.ANSI_GREEN
 import java.util.*
 
 private val logger = KotlinLogging.logger {}
@@ -54,7 +56,11 @@ class PlayerJSONStore : PlayerStore {
     }
 
     internal fun logAll() {
-        players.forEach { logger.info("${it}") }
+        players.forEach {
+            println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + "Full Name: " + ANSI_GREEN + "${it.fullName}")
+            println(ANSI_BLUE + "Date of Birth: " + ANSI_GREEN + "${it.dOB}")
+            println(ANSI_BLUE + "Plays For: " + ANSI_GREEN + "${it.playsFor.name}")
+        }
     }
 
     private fun serialize() {
