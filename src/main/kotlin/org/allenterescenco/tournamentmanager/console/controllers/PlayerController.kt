@@ -27,6 +27,7 @@ class PlayerController {
                 2 -> update()
                 3 -> list()
                 4 -> search()
+                5 -> delete()
                 -99 -> dummyData()
                 -1 -> println(ANSI_RED + "Exiting App" + ANSI_RESET)
                 else -> println(ANSI_RED + "Invalid Option" + ANSI_RESET)
@@ -65,6 +66,20 @@ class PlayerController {
             }
             else
                 logger.info(ANSI_RED + "Player Not Updated" + ANSI_RESET)
+        }
+        else
+            println(ANSI_RED + "Player Not Updated..." + ANSI_RESET)
+    }
+
+    fun delete() {
+        playerView.listPlayers(players)
+        val searchId = playerView.getId("Delete")
+        val tempPlayer = search(searchId)
+
+        if(tempPlayer != null) {
+            players.delete(tempPlayer)
+            logger.info(ANSI_RED + "Player Deleted : [ $tempPlayer ]" + ANSI_RESET)
+            println(ANSI_RED + "Player Deleted" + ANSI_RESET)
         }
         else
             println(ANSI_RED + "Player Not Updated..." + ANSI_RESET)

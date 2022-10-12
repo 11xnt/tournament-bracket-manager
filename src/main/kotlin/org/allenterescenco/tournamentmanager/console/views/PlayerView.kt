@@ -20,9 +20,10 @@ class PlayerView {
 
         println(ANSI_GREEN +"PLAYER MAIN MENU")
         println(ANSI_BLUE + " 1. " + ANSI_YELLOW + "Add a Player")
-        println(ANSI_BLUE + " 2. " + ANSI_YELLOW +"Update a Player")
-        println(ANSI_BLUE + " 3. " + ANSI_YELLOW +"List All Players")
-        println(ANSI_BLUE + " 4. " + ANSI_YELLOW +"Search Players")
+        println(ANSI_BLUE + " 2. " + ANSI_YELLOW + "Update a Player")
+        println(ANSI_BLUE + " 3. " + ANSI_YELLOW + "List All Players")
+        println(ANSI_BLUE + " 4. " + ANSI_YELLOW + "Search Players")
+        println(ANSI_BLUE + " 5. " + ANSI_YELLOW + "Delete a Player")
         println(ANSI_RED + "-1. Exit" + ANSI_RESET)
         println()
         print( ANSI_GREEN + "Enter Option : " + ANSI_RESET )
@@ -43,9 +44,9 @@ class PlayerView {
 
     fun showPlayer(player : PlayerModel) {
         if(player != null)
-            println(ANSI_YELLOW + "Team Details [ $player ]" + ANSI_RESET)
+            println(ANSI_YELLOW + "Player Details [ $player ]" + ANSI_RESET)
         else
-            println(ANSI_RED + "Team Not Found..." + ANSI_RESET)
+            println(ANSI_RED + "Player Not Found..." + ANSI_RESET)
     }
 
     fun addPlayerData(player : PlayerModel) : Boolean {
@@ -80,8 +81,6 @@ class PlayerView {
 
         val tempFullName: String?
         val tempDOB: String?
-        val tempPlaysFor: TeamModel?
-
 
         if (player != null) {
             print(ANSI_YELLOW + "Enter a new Name for [ " + player.fullName + " ] : " + ANSI_RESET)

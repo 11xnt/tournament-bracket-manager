@@ -39,6 +39,13 @@ class TeamMemStore : TeamStore {
         }
     }
 
+    override fun delete(team: TeamModel) {
+        var foundTeam = findOne(team.id!!)
+        if (foundTeam != null) {
+            teams.remove(team)
+        }
+    }
+
     internal fun logAll() {
         teams.forEach { logger.info("${it}") }
     }

@@ -57,6 +57,14 @@ class TeamJSONStore : TeamStore {
         serialize()
     }
 
+    override fun delete(team: TeamModel) {
+        var foundTeam = findOne(team.id!!)
+        if (foundTeam != null) {
+            teams.remove(team)
+        }
+        serialize()
+    }
+
     internal fun logAll() {
         teams.forEach {
             println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + "Team Name: " + ANSI_GREEN + "${it.name}")

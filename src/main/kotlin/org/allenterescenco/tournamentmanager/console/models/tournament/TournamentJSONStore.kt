@@ -60,6 +60,13 @@ class TournamentJSONStore : TournamentStore {
         serialize()
     }
 
+    override fun delete(tournament: TournamentModel) {
+        var foundTournament = findOne(tournament.id!!)
+        if (foundTournament != null) {
+            tournaments.remove(tournament)
+        }
+        serialize()
+    }
 
 
     internal fun logAll() {

@@ -54,6 +54,14 @@ class PlayerJSONStore : PlayerStore {
         }
         serialize()
     }
+    override fun delete(player: PlayerModel) {
+        var foundPlayer = findOne(player.id!!)
+        if (foundPlayer != null) {
+            players.remove(player)
+        }
+        serialize()
+    }
+
 
     internal fun logAll() {
         players.forEach {

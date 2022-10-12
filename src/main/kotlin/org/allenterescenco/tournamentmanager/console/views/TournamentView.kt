@@ -4,7 +4,6 @@ import org.allenterescenco.tournamentmanager.console.models.team.TeamJSONStore
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentJSONStore
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentModel
-import kotlin.reflect.typeOf
 
 val teams = TeamJSONStore()
 val teamView = TeamView()
@@ -21,6 +20,7 @@ class TournamentView {
         println(ANSI_BLUE + " 2. " + ANSI_YELLOW + "Update a Tournament")
         println(ANSI_BLUE + " 3. " + ANSI_YELLOW + "List All Tournaments")
         println(ANSI_BLUE + " 4. " + ANSI_YELLOW + "Search Tournaments")
+        println(ANSI_BLUE + " 5. " + ANSI_YELLOW + "Delete a Tournament")
         println(ANSI_RED + "-1. Exit" + ANSI_RESET)
         println()
         print( ANSI_GREEN + "Enter Option : " + ANSI_RESET )

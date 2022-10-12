@@ -29,6 +29,7 @@ class TournamentController {
                 2 -> update()
                 3 -> list()
                 4 -> search()
+                5 -> delete()
                 -99 -> dummyData()
                 -1 -> println(ANSI_RED + "Exiting App" + ANSI_RESET)
                 else -> println(ANSI_RED + "Invalid Option" + ANSI_RESET)
@@ -70,6 +71,20 @@ class TournamentController {
         }
         else
             println(ANSI_RED+"Tournament Not Updated..."+ ANSI_RESET)
+    }
+
+    fun delete() {
+        tournamentView.listTournaments(tournaments)
+        val searchId = tournamentView.getId("Delete")
+        val tempTournament = search(searchId)
+
+        if(tempTournament != null) {
+            tournaments.delete(tempTournament)
+            logger.info(ANSI_RED + "Tournament Deleted : [ $tempTournament ]" + ANSI_RESET)
+            println(ANSI_RED + "Tournament Deleted" + ANSI_RESET)
+        }
+        else
+            println(ANSI_RED + "Player Not Updated..." + ANSI_RESET)
     }
 
     fun search() {

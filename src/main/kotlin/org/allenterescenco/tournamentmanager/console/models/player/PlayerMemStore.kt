@@ -37,6 +37,13 @@ class PlayerMemStore : PlayerStore {
         }
     }
 
+    override fun delete(player: PlayerModel) {
+        var foundPlayer = findOne(player.id!!)
+        if (foundPlayer != null) {
+            players.remove(player)
+        }
+    }
+
     internal fun logAll() {
         players.forEach { logger.info("${it}") }
     }

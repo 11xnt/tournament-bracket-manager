@@ -35,6 +35,7 @@ class TeamController {
                 3 -> list()
                 4 -> search()
                 5 -> addPlayerToTeam()
+                6 -> delete()
                 -99 -> dummyData()
                 -1 -> println(ANSI_RED + "Exiting App" + ANSI_RESET)
                 else -> println(ANSI_RED + "Invalid Option" + ANSI_RESET)
@@ -79,6 +80,19 @@ class TeamController {
             println(ANSI_RED +"Team Not Updated..." + ANSI_RESET)
     }
 
+    fun delete() {
+        teamView.listTeams(teams)
+        val searchId = teamView.getId("Delete")
+        val tempTeam = search(searchId)
+
+        if(tempTeam != null) {
+            teams.delete(tempTeam)
+            logger.info(ANSI_RED + "Team Deleted : [ $tempTeam ]" + ANSI_RESET)
+            println(ANSI_RED + "Team Deleted" + ANSI_RESET)
+        }
+        else
+            println(ANSI_RED + "Team Not Updated..." + ANSI_RESET)
+    }
     fun search() {
         val tempTeam = search(teamView.getId("Search"))!!
         teamView.showTeam(tempTeam)

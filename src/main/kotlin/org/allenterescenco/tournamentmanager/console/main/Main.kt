@@ -50,7 +50,7 @@ fun menu() : Int {
     println( ANSI_BLUE + " 3. " + ANSI_YELLOW + "Enter Player Menu")
     println( ANSI_RED + "-1. Exit")
     println()
-
+    print( ANSI_GREEN + "Enter an option: " + ANSI_RESET)
     input = readLine()!!
     option = if (input.toIntOrNull() != null && !input.isEmpty())
         input.toInt()
