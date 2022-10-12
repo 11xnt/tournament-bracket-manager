@@ -108,11 +108,11 @@ class TeamController {
         teamView.listTeams(teams)
 
         teamView.listTeams(teams)
-        val searchId = teamView.getId("Add")
+        val searchId = teamView.getId("Add Players")
         val tempTeam = search(searchId)
 
         if(tempTeam != null) {
-
+            teamView.addPlayerToTeam(tempTeam)
         }
     }
 

@@ -128,6 +128,16 @@ class TeamView {
         return false
     }
 
+    fun addPlayerToTeam(team : TeamModel) {
+        playerView.listPlayers(players)
+        val searchId = playerView.getId("To Add to Team")
+        val chosenPlayer = search(searchId)
+        if(chosenPlayer != null) {
+            team.players.add(chosenPlayer)
+
+        }
+    }
+
     fun search(id: Long) : PlayerModel? {
         val foundPlayer = players.findOne(id)
         return foundPlayer
