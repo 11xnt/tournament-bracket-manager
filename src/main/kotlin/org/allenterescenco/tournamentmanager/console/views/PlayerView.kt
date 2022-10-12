@@ -13,6 +13,9 @@ const val ANSI_YELLOW = "\u001B[33m"
 const val ANSI_BLUE = "\u001B[34m"
 class PlayerView {
 
+    /**
+     * Main Player menu for users to select to bring them into the different options
+     */
     fun menu() : Int {
 
         var option : Int
@@ -35,6 +38,7 @@ class PlayerView {
         return option
     }
 
+    // list all players found in the players.json file
     fun listPlayers(players: PlayerJSONStore) {
         println(ANSI_GREEN + "Listing All Players" + ANSI_RESET)
         println()
@@ -42,6 +46,7 @@ class PlayerView {
         println()
     }
 
+    // list a player found in the players.json file
     fun showPlayer(player : PlayerModel) {
         if(player != null)
             println(ANSI_YELLOW + "Player Details [ $player ]" + ANSI_RESET)
@@ -49,6 +54,7 @@ class PlayerView {
             println(ANSI_RED + "Player Not Found..." + ANSI_RESET)
     }
 
+    // takes in user input for details of a new player
     fun addPlayerData(player : PlayerModel) : Boolean {
 
         println()
@@ -72,11 +78,13 @@ class PlayerView {
                 player.playsFor != null
     }
 
+    // finds and returns a player found in the players.json file
     fun search(id: Long) : TeamModel? {
         val foundTeam = teams.findOne(id)
         return foundTeam
     }
 
+    // takes user input to update player data
     fun updatePlayerData(player : PlayerModel) : Boolean {
 
         val tempFullName: String?
@@ -106,6 +114,7 @@ class PlayerView {
         return false
     }
 
+    // prompts user to input an id
     fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id

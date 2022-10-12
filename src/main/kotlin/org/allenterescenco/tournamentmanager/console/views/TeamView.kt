@@ -11,6 +11,9 @@ val playerView = PlayerView()
 
 class TeamView {
 
+    /**
+     * Main Team menu for users to select to bring them into the different options
+     */
     fun menu() : Int {
 
         var option : Int
@@ -34,6 +37,7 @@ class TeamView {
         return option
     }
 
+    // list all teams found in the teams.json file
     fun listTeams(teams: TeamJSONStore) {
         println(ANSI_GREEN + "Listing All Teams" + ANSI_RESET)
         println()
@@ -41,6 +45,7 @@ class TeamView {
         println()
     }
 
+    // list a team found in the teams.json file
     fun showTeam(team : TeamModel) {
         if(team != null)
             println(ANSI_YELLOW + "Team Details [ $team ]" + ANSI_RESET)
@@ -48,6 +53,7 @@ class TeamView {
             println(ANSI_RED + "Team Not Found..." + ANSI_RESET)
     }
 
+    // takes in user input for details of a new team
     fun addTeamData(team : TeamModel) : Boolean {
 
         val tempPlayers: ArrayList<PlayerModel> = arrayListOf()
@@ -84,6 +90,7 @@ class TeamView {
                 team.players.isNotEmpty()
     }
 
+    // takes user input to update team data
     fun updateTeamData(team : TeamModel) : Boolean {
 
         val tempName: String?
@@ -128,6 +135,7 @@ class TeamView {
         return false
     }
 
+    // user gives a player id to add it to the team.players field
     fun addPlayerToTeam(team : TeamModel) {
         playerView.listPlayers(players)
         val searchId = playerView.getId("To Add to Team")
@@ -138,11 +146,13 @@ class TeamView {
         }
     }
 
+    // finds and returns a player found in the players.json file
     fun search(id: Long) : PlayerModel? {
         val foundPlayer = players.findOne(id)
         return foundPlayer
     }
 
+    // prompts user to input an id
     fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id

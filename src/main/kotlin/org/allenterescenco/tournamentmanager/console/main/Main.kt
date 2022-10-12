@@ -39,6 +39,9 @@ fun start() {
     logger.info { ANSI_RED + "Shutting Down Tournament Manager Console App" }
 }
 
+/**
+ * Main menu for user input to start and exit different controllers
+ */
 fun menu() : Int {
 
     var option : Int

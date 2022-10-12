@@ -10,6 +10,9 @@ val teamView = TeamView()
 
 class TournamentView {
 
+    /**
+     * Main Tournament menu for users to select to bring them into the different options
+     */
     fun menu() : Int {
 
         var option : Int
@@ -32,6 +35,7 @@ class TournamentView {
         return option
     }
 
+    // lists all tournaments found in the tournaments.json file
     fun listTournaments(tournaments: TournamentJSONStore) {
         println(ANSI_GREEN + "Listing All Tournaments" + ANSI_RESET)
         println()
@@ -39,6 +43,7 @@ class TournamentView {
         println()
     }
 
+    // list a tournament found in the tournaments.json file
     fun showTournament(tournament : TournamentModel) {
         if(tournament != null)
             println(ANSI_YELLOW + "Tournament Details [ $tournament ]" + ANSI_RESET)
@@ -46,6 +51,7 @@ class TournamentView {
             println(ANSI_RED + "Tournament Not Found..." + ANSI_RESET)
     }
 
+    // takes in user input for details of a new tournament
     fun addTournamentData(tournament : TournamentModel) : Boolean {
 
         val tempTeams: ArrayList<TeamModel> = arrayListOf()
@@ -62,6 +68,7 @@ class TournamentView {
         print(ANSI_YELLOW + "Enter the Max Teams : " + ANSI_RESET)
         tournament.maxTeams = readln().toInt()
 
+        // lets user add multiple teams to the tournament
         println(ANSI_YELLOW + "Choose a teams to partake in the tournament for [ " + tournament.winner + " ] : " + ANSI_RESET)
         println(ANSI_YELLOW + "How many teams do you wish to add? : " + ANSI_RESET)
         val tempNumOfTeams: Int? = readLine()?.toInt()
@@ -85,6 +92,7 @@ class TournamentView {
                 tournament.partTeams.isNotEmpty()
     }
 
+    // takes user input to update tournament data
     fun updateTournamentData(tournament : TournamentModel) : Boolean {
 
         val tempName: String?
@@ -144,11 +152,13 @@ class TournamentView {
         return false
     }
 
+    // finds and returns a team found in the teams.json file
     fun search(id: Long) : TeamModel? {
         val foundTeam = teams.findOne(id)
         return foundTeam
     }
 
+    // prompts user to input an id
     fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id

@@ -71,7 +71,7 @@ class TournamentJSONStore : TournamentStore {
 
     internal fun logAll() {
         tournaments.forEach {
-            println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + "Tournament Name: " + ANSI_GREEN + "${it.name}")
+            println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + " Tournament Name: " + ANSI_GREEN + "${it.name}")
             println(ANSI_BLUE + "Tournament Organiser: " + ANSI_GREEN + "${it.org}")
             println(ANSI_BLUE + "Start Date: " + ANSI_GREEN + "${it.startDate}")
             println(ANSI_BLUE + "Ending Date: " + ANSI_GREEN + "${it.endDate}")

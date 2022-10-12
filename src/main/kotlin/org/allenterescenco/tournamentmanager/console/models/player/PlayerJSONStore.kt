@@ -65,7 +65,7 @@ class PlayerJSONStore : PlayerStore {
 
     internal fun logAll() {
         players.forEach {
-            println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + "Full Name: " + ANSI_GREEN + "${it.fullName}")
+            println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + " Full Name: " + ANSI_GREEN + "${it.fullName}")
             println(ANSI_BLUE + "Date of Birth: " + ANSI_GREEN + "${it.dOB}")
             println(ANSI_BLUE + "Plays For: " + ANSI_GREEN + "${it.playsFor.name}")
         }

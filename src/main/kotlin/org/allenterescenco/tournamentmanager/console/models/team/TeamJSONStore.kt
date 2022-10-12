@@ -67,7 +67,7 @@ class TeamJSONStore : TeamStore {
 
     internal fun logAll() {
         teams.forEach {
-            println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + "Team Name: " + ANSI_GREEN + "${it.name}")
+            println(ANSI_BLUE + "ID: " + ANSI_GREEN + "${it.id}" + ANSI_BLUE + " Team Name: " + ANSI_GREEN + "${it.name}")
             println(ANSI_BLUE + "Team Wins: " + ANSI_GREEN + "${it.wins}")
             println(ANSI_BLUE + "Team Losses: " + ANSI_GREEN + "${it.losses}")
             println(ANSI_BLUE + "Win Percentage: " + ANSI_GREEN + "${it.winPercentage}")
