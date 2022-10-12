@@ -103,5 +103,110 @@
         }
       }
     ]
+  },
+  {
+    "id": 2874477577896978137,
+    "name": "Team Red",
+    "wins": 3,
+    "losses": 0,
+    "winPercentage": 100,
+    "players": [
+      {
+        "id": 0,
+        "fullName": "Default Name",
+        "dOB": "01/01/99",
+        "playsFor": {
+          "id": 0,
+          "name": "Default Team",
+          "wins": 0,
+          "losses": 0,
+          "winPercentage": 0,
+          "players": []
+        }
+      },
+      {
+        "id": 0,
+        "fullName": "Default Name",
+        "dOB": "01/01/99",
+        "playsFor": {
+          "id": 0,
+          "name": "Default Team",
+          "wins": 0,
+          "losses": 0,
+          "winPercentage": 0,
+          "players": []
+        }
+      }
+    ]
+  },
+  {
+    "id": 8185475957359230622,
+    "name": "Team Blue",
+    "wins": 2,
+    "losses": 1,
+    "winPercentage": 66,
+    "players": [
+      {
+        "id": 0,
+        "fullName": "Default Name",
+        "dOB": "01/01/99",
+        "playsFor": {
+          "id": 0,
+          "name": "Default Team",
+          "wins": 0,
+          "losses": 0,
+          "winPercentage": 0,
+          "players": []
+        }
+      },
+      {
+        "id": 0,
+        "fullName": "Default Name",
+        "dOB": "01/01/99",
+        "playsFor": {
+          "id": 0,
+          "name": "Default Team",
+          "wins": 0,
+          "losses": 0,
+          "winPercentage": 0,
+          "players": []
+        }
+      }
+    ]
+  },
+  {
+    "id": 1665350937967533064,
+    "name": "Team Green",
+    "wins": 0,
+    "losses": 3,
+    "winPercentage": 0,
+    "players": [
+      {
+        "id": 0,
+        "fullName": "Default Name",
+        "dOB": "01/01/99",
+        "playsFor": {
+          "id": 0,
+          "name": "Default Team",
+          "wins": 0,
+          "losses": 0,
+          "winPercentage": 0,
+          "players": []
+        }
+      },
+      {
+        "id": 0,
+        "fullName": "Default Name",
+        "dOB": "01/01/99",
+        "playsFor": {
+          "id": 0,
+          "name": "Default Team",
+          "wins": 0,
+          "losses": 0,
+          "winPercentage": 0,
+          "players": []
+        }
+      }
+    ]
   }
 ]

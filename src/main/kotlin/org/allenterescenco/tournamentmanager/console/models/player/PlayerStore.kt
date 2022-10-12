@@ -5,4 +5,5 @@ interface PlayerStore {
     fun findOne(id: Long): PlayerModel?
     fun create(player: PlayerModel)
     fun update(player: PlayerModel)
+    fun delete(player: PlayerModel)
 }

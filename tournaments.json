@@ -2,28 +2,11 @@
   {
     "id": 7812404985608557516,
     "name": "Pro League",
-    "org": "Pro Org",
-    "startDate": "11/06/2022",
-    "endDate": "15/06/2022",
+    "org": "Pro",
+    "startDate": "12",
+    "endDate": "14",
     "maxTeams": 64,
-    "partTeams": [
-      {
-        "id": 1,
-        "name": "Team 1",
-        "wins": 0,
-        "losses": 0,
-        "winPercentage": 0,
-        "players": []
-      },
-      {
-        "id": 2,
-        "name": "Team 2",
-        "wins": 0,
-        "losses": 0,
-        "winPercentage": 0,
-        "players": []
-      }
-    ],
+    "partTeams": [],
     "winner": {
       "id": 1,
       "name": "Team 1",

@@ -39,6 +39,13 @@ class TournamentMemStore : TournamentStore {
         }
     }
 
+    override fun delete(tournament: TournamentModel) {
+        var foundTournament = findOne(tournament.id!!)
+        if (foundTournament != null) {
+            tournaments.remove(tournament)
+        }
+    }
+
     internal fun logAll() {
         tournaments.forEach { logger.info("${it}") }
     }
