@@ -16,14 +16,14 @@ class TeamView {
         var option : Int
         var input: String?
 
-        println("TEAM MAIN MENU")
-        println(" 1. Add a Team")
-        println(" 2. Update a Team")
-        println(" 3. List All Teams")
-        println(" 4. Search Teams")
-        println("-1. Exit")
+        println(ANSI_GREEN +"TEAM MAIN MENU")
+        println(ANSI_BLUE + " 1. " + ANSI_YELLOW + "Add a Team")
+        println(ANSI_BLUE + " 2. " + ANSI_YELLOW +"Update a Team")
+        println(ANSI_BLUE + " 2. " + ANSI_YELLOW +"List All Teams")
+        println(ANSI_BLUE + " 2. " + ANSI_YELLOW +"Search Teams")
+        println(ANSI_RED + "-1. Exit" + ANSI_RESET)
         println()
-        print("Enter Option : ")
+        print( ANSI_GREEN + "Enter Option : " + ANSI_RESET )
         input = readLine()!!
         option = if (input.toIntOrNull() != null && !input.isEmpty())
             input.toInt()
@@ -33,7 +33,7 @@ class TeamView {
     }
 
     fun listTeams(teams: TeamJSONStore) {
-        println("List All Teams")
+        println(ANSI_GREEN + "Listing All Teams" + ANSI_RESET)
         println()
         teams.logAll()
         println()
@@ -41,9 +41,9 @@ class TeamView {
 
     fun showTeam(team : TeamModel) {
         if(team != null)
-            println("Team Details [ $team ]")
+            println(ANSI_YELLOW + "Team Details [ $team ]" + ANSI_RESET)
         else
-            println("Team Not Found...")
+            println(ANSI_RED + "Team Not Found..." + ANSI_RESET)
     }
 
     fun addTeamData(team : TeamModel) : Boolean {
@@ -51,22 +51,22 @@ class TeamView {
         val tempPlayers: ArrayList<PlayerModel> = arrayListOf()
 
         println()
-        print("Enter a Name : ")
+        print(ANSI_YELLOW + "Enter a Team Name : " + ANSI_RESET)
         team.name = readLine()!!
-        print("Enter their number of wins : ")
+        print(ANSI_YELLOW + "Enter their number of wins : " + ANSI_RESET)
         team.wins = readln().toInt()
-        print("Enter their number of losses : ")
+        print(ANSI_YELLOW +"Enter their number of losses : " + ANSI_RESET)
         team.losses = readln().toInt()
         team.winPercentage = ((team.wins.toDouble() / (team.wins+team.losses))*100).toInt()
 
-        println("Choose a players to add to the team for [ " + team.name + " ] : ")
-        println("How many players do you wish to add? : ")
+        println(ANSI_YELLOW +"Choose a players to add to the team for [ " + team.name + " ] : " + ANSI_RESET)
+        println(ANSI_YELLOW +"How many players do you wish to add? : " + ANSI_RESET)
 
         val tempNumOfPlayers: Int? = readLine()?.toInt()
 
         for (i in 0..tempNumOfPlayers!!) {
             playerView.listPlayers(players)
-            val searchId = playerView.getId()
+            val searchId = playerView.getId("Add")
             val chosenTeam = search(searchId)
             if (chosenTeam != null) {
                 tempPlayers.add(chosenTeam)
@@ -91,21 +91,21 @@ class TeamView {
 
 
         if (team != null) {
-            print("Enter a new Name for [ " + team.name + " ] : ")
+            print(ANSI_YELLOW +"Enter a new Name for [ " + team.name + " ] : " + ANSI_RESET)
             tempName = readLine()!!
-            print("Enter a new win total for [ " + team.wins + " ] : ")
+            print(ANSI_YELLOW +"Enter a new win total for [ " + team.wins + " ] : " + ANSI_RESET)
             tempWins = readln().toInt()
-            print("Enter a new win total for [ " + team.losses + " ] : ")
+            print(ANSI_YELLOW +"Enter a new win total for [ " + team.losses + " ] : " + ANSI_RESET)
             tempLosses = readln().toInt()
 
-            println("Choose a players to add to the team for [ " + team.name + " ] : ")
-            println("How many players do you wish to add? : ")
+            println(ANSI_YELLOW +"Choose a players to add to the team for [ " + team.name + " ] : " + ANSI_RESET)
+            println(ANSI_YELLOW +"How many players do you wish to add? : " + ANSI_RESET)
 
             val tempNumOfPlayers: Int? = readLine()?.toInt()
 
             for (i in 0..tempNumOfPlayers!!) {
                 playerView.listPlayers(players)
-                val searchId = playerView.getId()
+                val searchId = playerView.getId("Update")
                 val chosenTeam = search(searchId)
                 if (chosenTeam != null) {
                     tempPlayers.add(chosenTeam)
@@ -131,10 +131,10 @@ class TeamView {
         return foundPlayer
     }
 
-    fun getId() : Long {
+    fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id
-        print("Enter id to Search/Update : ")
+        print(ANSI_YELLOW +"Enter id to ${type} : " + ANSI_RESET)
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
             strId.toLong()

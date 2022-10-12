@@ -4,6 +4,7 @@ import org.allenterescenco.tournamentmanager.console.models.team.TeamJSONStore
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentJSONStore
 import org.allenterescenco.tournamentmanager.console.models.team.TeamModel
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentModel
+import kotlin.reflect.typeOf
 
 val teams = TeamJSONStore()
 val teamView = TeamView()
@@ -15,14 +16,14 @@ class TournamentView {
         var option : Int
         var input: String?
 
-        println("TOURNAMENT MAIN MENU")
-        println(" 1. Add Tournament")
-        println(" 2. Update a Tournament")
-        println(" 3. List All Tournaments")
-        println(" 4. Search Tournaments")
-        println("-1. Exit")
+        println(ANSI_GREEN +"TOURNAMENT MAIN MENU")
+        println(ANSI_BLUE + " 1. " + ANSI_YELLOW + "Add Tournament")
+        println(ANSI_BLUE + " 2. " + ANSI_YELLOW + "Update a Tournament")
+        println(ANSI_BLUE + " 3. " + ANSI_YELLOW + "List All Tournaments")
+        println(ANSI_BLUE + " 4. " + ANSI_YELLOW + "Search Tournaments")
+        println(ANSI_RED + "-1. Exit" + ANSI_RESET)
         println()
-        print("Enter Option : ")
+        print( ANSI_GREEN + "Enter Option : " + ANSI_RESET )
         input = readLine()!!
         option = if (input.toIntOrNull() != null && !input.isEmpty())
             input.toInt()
@@ -32,7 +33,7 @@ class TournamentView {
     }
 
     fun listTournaments(tournaments: TournamentJSONStore) {
-        println("List All Tournaments")
+        println(ANSI_GREEN + "Listing All Tournaments" + ANSI_RESET)
         println()
         tournaments.logAll()
         println()
@@ -40,9 +41,9 @@ class TournamentView {
 
     fun showTournament(tournament : TournamentModel) {
         if(tournament != null)
-            println("Tournament Details [ $tournament ]")
+            println(ANSI_YELLOW + "Tournament Details [ $tournament ]" + ANSI_RESET)
         else
-            println("Tournament Not Found...")
+            println(ANSI_RED + "Tournament Not Found..." + ANSI_RESET)
     }
 
     fun addTournamentData(tournament : TournamentModel) : Boolean {
@@ -50,24 +51,24 @@ class TournamentView {
         val tempTeams: ArrayList<TeamModel> = arrayListOf()
 
         println()
-        print("Enter a Name : ")
+        print(ANSI_YELLOW + "Enter a Name : " + ANSI_RESET)
         tournament.name = readLine()!!
-        print("Enter an Organiser : ")
+        print(ANSI_YELLOW + "Enter an Organiser : " + ANSI_RESET)
         tournament.org = readLine()!!
-        print("Enter the Starting Date : ")
+        print(ANSI_YELLOW + "Enter the Starting Date : " + ANSI_RESET)
         tournament.startDate = readLine()!!
-        print("Enter the Ending Date : ")
+        print(ANSI_YELLOW + "Enter the Ending Date : " + ANSI_RESET)
         tournament.endDate = readLine()!!
-        print("Enter the Max Teams : ")
+        print(ANSI_YELLOW + "Enter the Max Teams : " + ANSI_RESET)
         tournament.maxTeams = readln().toInt()
 
-        println("Choose a teams to partake in the tournament for [ " + tournament.winner + " ] : ")
-        println("How many teams do you wish to add? : ")
+        println(ANSI_YELLOW + "Choose a teams to partake in the tournament for [ " + tournament.winner + " ] : " + ANSI_RESET)
+        println(ANSI_YELLOW + "How many teams do you wish to add? : " + ANSI_RESET)
         val tempNumOfTeams: Int? = readLine()?.toInt()
 
         for (i in 0..tempNumOfTeams!!) {
             teamView.listTeams(teams)
-            val searchId = teamView.getId()
+            val searchId = teamView.getId("Add")
             val chosenTeam = search(searchId)
             if (chosenTeam != null) {
                 tempTeams.add(chosenTeam)
@@ -96,30 +97,30 @@ class TournamentView {
 
 
         if (tournament != null) {
-            print("Enter a new Title for [ " + tournament.name + " ] : ")
+            print(ANSI_YELLOW + "Enter a new Title for [ " + tournament.name + " ] : " + ANSI_RESET)
             tempName = readLine()!!
 
-            print("Enter a new Description for [ " + tournament.org + " ] : ")
+            print(ANSI_YELLOW + "Enter a new Description for [ " + tournament.org + " ] : " + ANSI_RESET)
             tempOrg = readLine()!!
 
-            print("Enter a new Start Date for [ " + tournament.startDate + " ] : ")
+            print(ANSI_YELLOW + "Enter a new Start Date for [ " + tournament.startDate + " ] : " + ANSI_RESET)
             tempStartDate = readLine()!!
 
-            print("Enter a new End Date for [ " + tournament.endDate + " ] : ")
+            print(ANSI_YELLOW + "Enter a new End Date for [ " + tournament.endDate + " ] : " + ANSI_RESET)
             tempEndDate = readLine()!!
 
-            print("Choose a new Winner for [ " + tournament.winner + " ] : ")
+            print(ANSI_YELLOW + "Choose a new Winner for [ " + tournament.winner + " ] : " + ANSI_RESET)
             teamView.listTeams(teams)
-            val searchId = teamView.getId()
+            val searchId = teamView.getId("")
             tempWinner = search(searchId)
 
-            print("Choose a teams to partake in the tournament for [ " + tournament.winner + " ] : ")
-            print("How many teams do you wish to add? : ")
+            print(ANSI_YELLOW + "Choose a teams to partake in the tournament for [ " + tournament.winner + " ] : " + ANSI_RESET)
+            print(ANSI_YELLOW + "How many teams do you wish to add? : " + ANSI_RESET)
             tempNumOfTeams = readLine()?.toInt()
 
             for (i in 0..tempNumOfTeams!!) {
                 teamView.listTeams(teams)
-                val searchId = teamView.getId()
+                val searchId = teamView.getId("Update")
                 val chosenTeam = search(searchId)
                 if (chosenTeam != null) {
                     tempTeams.add(chosenTeam)
@@ -148,10 +149,10 @@ class TournamentView {
         return foundTeam
     }
 
-    fun getId() : Long {
+    fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id
-        print("Enter id to Search/Update : ")
+        print("Enter id to ${type} : " + ANSI_RESET)
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
             strId.toLong()

@@ -14,8 +14,7 @@ class PlayerController {
     val logger = KotlinLogging.logger {}
 
     init {
-        logger.info { "Launching Player Manager Console App" }
-        println("Player Kotlin App Version 1.0")
+        println(ANSI_GREEN + "Launching Player Manager Console App" + ANSI_RESET)
     }
 
     fun start() {
@@ -29,12 +28,12 @@ class PlayerController {
                 3 -> list()
                 4 -> search()
                 -99 -> dummyData()
-                -1 -> println("Exiting App")
-                else -> println("Invalid Option")
+                -1 -> println(ANSI_RED + "Exiting App" + ANSI_RESET)
+                else -> println(ANSI_RED + "Invalid Option" + ANSI_RESET)
             }
             println()
         } while (input != -1)
-        logger.info { "Shutting Down Player Manager Player Console App" }
+        println(ANSI_RED +"Shutting Down Player Manager Console App" + ANSI_RESET)
     }
 
     fun menu() :Int { return playerView.menu() }
@@ -45,7 +44,7 @@ class PlayerController {
         if (playerView.addPlayerData(tempPlayer))
             players.create(tempPlayer)
         else
-            logger.info("Player Not Added")
+            println(ANSI_RED +"Player Not Added"+ ANSI_RESET )
     }
 
     fun list() {
@@ -55,24 +54,24 @@ class PlayerController {
     fun update() {
 
         playerView.listPlayers(players)
-        val searchId = playerView.getId()
+        val searchId = playerView.getId("Update")
         val tempPlayer = search(searchId)
 
         if(tempPlayer != null) {
             if(playerView.updatePlayerData(tempPlayer)) {
                 players.update(tempPlayer)
                 playerView.showPlayer(tempPlayer)
-                logger.info("Player Updated : [ $tempPlayer ]")
+                logger.info(ANSI_GREEN + "Player Updated : [ $tempPlayer ]" + ANSI_RESET)
             }
             else
-                logger.info("Player Not Updated")
+                logger.info(ANSI_RED + "Player Not Updated" + ANSI_RESET)
         }
         else
-            println("Player Not Updated...")
+            println(ANSI_RED + "Player Not Updated..." + ANSI_RESET)
     }
 
     fun search() {
-        val tempPlayer = search(playerView.getId())!!
+        val tempPlayer = search(playerView.getId("Search"))!!
         playerView.showPlayer(tempPlayer)
     }
 

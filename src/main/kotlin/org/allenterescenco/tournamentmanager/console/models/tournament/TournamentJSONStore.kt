@@ -57,6 +57,8 @@ class TournamentJSONStore : TournamentStore {
         serialize()
     }
 
+
+
     internal fun logAll() {
         tournaments.forEach { logger.info("${it}") }
     }

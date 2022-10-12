@@ -7,6 +7,7 @@ import org.allenterescenco.tournamentmanager.console.models.tournament.Tournamen
 import org.allenterescenco.tournamentmanager.console.models.tournament.TournamentModel
 import org.allenterescenco.tournamentmanager.console.views.TournamentView
 
+
 class TournamentController {
 
     val tournaments = TournamentJSONStore()
@@ -29,12 +30,12 @@ class TournamentController {
                 3 -> list()
                 4 -> search()
                 -99 -> dummyData()
-                -1 -> println("Exiting App")
-                else -> println("Invalid Option")
+                -1 -> println(ANSI_RED + "Exiting App" + ANSI_RESET)
+                else -> println(ANSI_RED + "Invalid Option" + ANSI_RESET)
             }
             println()
         } while (input != -1)
-        logger.info { "Shutting Down Tournament Manager Tournament Console App" }
+        println(ANSI_RED +"Shutting Down Team Manager Console App" + ANSI_RESET)
     }
 
     fun menu() :Int { return tournamentView.menu() }
@@ -45,7 +46,7 @@ class TournamentController {
         if (tournamentView.addTournamentData(tempTournament))
             tournaments.create(tempTournament)
         else
-            logger.info("Tournament Not Added")
+            logger.info(ANSI_RED+"Tournament Not Added"+ ANSI_RESET)
     }
 
     fun list() {
@@ -55,24 +56,24 @@ class TournamentController {
     fun update() {
 
         tournamentView.listTournaments(tournaments)
-        val searchId = tournamentView.getId()
+        val searchId = tournamentView.getId("Update")
         val tempTournament = search(searchId)
 
         if(tempTournament != null) {
             if(tournamentView.updateTournamentData(tempTournament)) {
                 tournaments.update(tempTournament)
                 tournamentView.showTournament(tempTournament)
-                logger.info("Tournament Updated : [ $tempTournament ]")
+                logger.info(ANSI_GREEN+"Tournament Updated : [ $tempTournament ]"+ ANSI_RESET)
             }
             else
-                logger.info("Tournament Not Updated")
+                logger.info(ANSI_RED+"Tournament Not Updated"+ ANSI_RESET)
         }
         else
-            println("Tournament Not Updated...")
+            println(ANSI_RED+"Tournament Not Updated..."+ ANSI_RESET)
     }
 
     fun search() {
-        val tempTournament = search(tournamentView.getId())!!
+        val tempTournament = search(tournamentView.getId("Search"))!!
         tournamentView.showTournament(tempTournament)
     }
 
