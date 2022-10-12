@@ -208,5 +208,115 @@
         }
       }
     ]
+  },
+  {
+    "id": -5151312127776843248,
+    "name": "pfd",
+    "wins": 2,
+    "losses": 2,
+    "winPercentage": 50,
+    "players": [
+      {
+        "id": 6601240599129063705,
+        "fullName": "Jim Jones",
+        "dOB": "10/06/2000",
+        "playsFor": {
+          "id": 99,
+          "name": "Team Green",
+          "wins": 2,
+          "losses": 1,
+          "winPercentage": 66,
+          "players": []
+        }
+      },
+      {
+        "id": 6601240599129063705,
+        "fullName": "Jim Jones",
+        "dOB": "10/06/2000",
+        "playsFor": {
+          "id": 99,
+          "name": "Team Green",
+          "wins": 2,
+          "losses": 1,
+          "winPercentage": 66,
+          "players": []
+        }
+      }
+    ]
+  },
+  {
+    "id": -4030121908267123737,
+    "name": "Test Team",
+    "wins": 23,
+    "losses": 7,
+    "winPercentage": 76,
+    "players": [
+      {
+        "id": -8847841132229926171,
+        "fullName": "all",
+        "dOB": "24",
+        "playsFor": {
+          "id": -5151312127776843248,
+          "name": "pfd",
+          "wins": 2,
+          "losses": 2,
+          "winPercentage": 50,
+          "players": [
+            {
+              "id": 6601240599129063705,
+              "fullName": "Jim Jones",
+              "dOB": "10/06/2000",
+              "playsFor": {
+                "id": 99,
+                "name": "Team Green",
+                "wins": 2,
+                "losses": 1,
+                "winPercentage": 66,
+                "players": []
+              }
+            },
+            {
+              "id": 6601240599129063705,
+              "fullName": "Jim Jones",
+              "dOB": "10/06/2000",
+              "playsFor": {
+                "id": 99,
+                "name": "Team Green",
+                "wins": 2,
+                "losses": 1,
+                "winPercentage": 66,
+                "players": []
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": -3300962320753761156,
+        "fullName": "Jim Jones",
+        "dOB": "10/06/2000",
+        "playsFor": {
+          "id": 99,
+          "name": "Team Green",
+          "wins": 2,
+          "losses": 1,
+          "winPercentage": 66,
+          "players": []
+        }
+      },
+      {
+        "id": -3300962320753761156,
+        "fullName": "Jim Jones",
+        "dOB": "10/06/2000",
+        "playsFor": {
+          "id": 99,
+          "name": "Team Green",
+          "wins": 2,
+          "losses": 1,
+          "winPercentage": 66,
+          "players": []
+        }
+      }
+    ]
   }
 ]

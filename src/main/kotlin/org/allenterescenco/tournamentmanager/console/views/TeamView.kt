@@ -112,7 +112,7 @@ class TeamView {
 
             val tempNumOfPlayers: Int? = readLine()?.toInt()
 
-            for (i in 0..tempNumOfPlayers!!) {
+            for (i in 1..tempNumOfPlayers!!) {
                 playerView.listPlayers(players)
                 val searchId = playerView.getId("Update")
                 val chosenTeam = search(searchId)
@@ -156,7 +156,7 @@ class TeamView {
     fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id
-        print(ANSI_YELLOW +"Enter id to ${type} : " + ANSI_RESET)
+        println(ANSI_YELLOW +"Enter id to ${type} : " + ANSI_RESET)
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
             strId.toLong()

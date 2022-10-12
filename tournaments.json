@@ -287,5 +287,49 @@
       "winPercentage": 0,
       "players": []
     }
+  },
+  {
+    "id": 8077523154748874828,
+    "name": "Test",
+    "org": "Test",
+    "startDate": "13/10/2022",
+    "endDate": "15/10/2022",
+    "maxTeams": 4,
+    "partTeams": [],
+    "winner": {
+      "id": -8075971702157767643,
+      "name": "Team Red",
+      "wins": 3,
+      "losses": 0,
+      "winPercentage": 100,
+      "players": [
+        {
+          "id": 0,
+          "fullName": "Default Name",
+          "dOB": "01/01/99",
+          "playsFor": {
+            "id": 0,
+            "name": "Default Team",
+            "wins": 0,
+            "losses": 0,
+            "winPercentage": 0,
+            "players": []
+          }
+        },
+        {
+          "id": 0,
+          "fullName": "Default Name",
+          "dOB": "01/01/99",
+          "playsFor": {
+            "id": 0,
+            "name": "Default Team",
+            "wins": 0,
+            "losses": 0,
+            "winPercentage": 0,
+            "players": []
+          }
+        }
+      ]
+    }
   }
 ]

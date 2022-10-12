@@ -64,8 +64,9 @@ class PlayerView {
         player.dOB = readLine()!!
 
         teamView.listTeams(teams)
-        print(ANSI_YELLOW +"Choose who they play for: "+ ANSI_RESET)
+        println(ANSI_YELLOW +"Choose who they play for: "+ ANSI_RESET)
         val searchId = teamView.getId("Choose")
+
         val chosenTeam = search(searchId)
         if (chosenTeam != null) {
             player.playsFor = chosenTeam
@@ -74,7 +75,7 @@ class PlayerView {
         }
 
         return player.fullName.isNotEmpty() &&
-                player.dOB.isNullOrEmpty() &&
+                player.dOB.isNotEmpty() &&
                 player.playsFor != null
     }
 
@@ -118,7 +119,7 @@ class PlayerView {
     fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id
-        print(ANSI_YELLOW + "Enter id to ${type} : " + ANSI_RESET)
+        println(ANSI_YELLOW + "Enter id to ${type} : " + ANSI_RESET)
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
             strId.toLong()

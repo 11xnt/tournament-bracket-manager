@@ -105,25 +105,25 @@ class TournamentView {
 
 
         if (tournament != null) {
-            print(ANSI_YELLOW + "Enter a new Title for [ " + tournament.name + " ] : " + ANSI_RESET)
+            println(ANSI_YELLOW + "Enter a new Title for [ " + tournament.name + " ] : " + ANSI_RESET)
             tempName = readLine()!!
 
-            print(ANSI_YELLOW + "Enter a new Description for [ " + tournament.org + " ] : " + ANSI_RESET)
+            println(ANSI_YELLOW + "Enter a new Description for [ " + tournament.org + " ] : " + ANSI_RESET)
             tempOrg = readLine()!!
 
-            print(ANSI_YELLOW + "Enter a new Start Date for [ " + tournament.startDate + " ] : " + ANSI_RESET)
+            println(ANSI_YELLOW + "Enter a new Start Date for [ " + tournament.startDate + " ] : " + ANSI_RESET)
             tempStartDate = readLine()!!
 
-            print(ANSI_YELLOW + "Enter a new End Date for [ " + tournament.endDate + " ] : " + ANSI_RESET)
+            println(ANSI_YELLOW + "Enter a new End Date for [ " + tournament.endDate + " ] : " + ANSI_RESET)
             tempEndDate = readLine()!!
 
-            print(ANSI_YELLOW + "Choose a new Winner for [ " + tournament.winner + " ] : " + ANSI_RESET)
+            println(ANSI_YELLOW + "Choose a new Winner for [ " + tournament.winner + " ] : " + ANSI_RESET)
             teamView.listTeams(teams)
             val searchId = teamView.getId("")
             tempWinner = search(searchId)
 
-            print(ANSI_YELLOW + "Choose a teams to partake in the tournament for [ " + tournament.winner + " ] : " + ANSI_RESET)
-            print(ANSI_YELLOW + "How many teams do you wish to add? : " + ANSI_RESET)
+            println(ANSI_YELLOW + "Choose a teams to partake in the tournament for [ " + tournament.winner + " ] : " + ANSI_RESET)
+            println(ANSI_YELLOW + "How many teams do you wish to add? : " + ANSI_RESET)
             tempNumOfTeams = readLine()?.toInt()
 
             for (i in 0..tempNumOfTeams!!) {
@@ -162,7 +162,7 @@ class TournamentView {
     fun getId(type : String) : Long {
         var strId : String? // String to hold user input
         var searchId : Long // Long to hold converted id
-        print("Enter id to ${type} : " + ANSI_RESET)
+        println("Enter id to ${type} : " + ANSI_RESET)
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
             strId.toLong()
