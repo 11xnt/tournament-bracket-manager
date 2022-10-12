@@ -75,6 +75,7 @@ class TeamJSONStore : TeamStore {
             it.players.forEach() {
                 println( ANSI_GREEN + "${it.fullName}")
             }
+            println()
         }
     }
 

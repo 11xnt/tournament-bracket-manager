@@ -81,6 +81,7 @@ class TournamentJSONStore : TournamentStore {
                 println( ANSI_GREEN + "${it.name}")
             }
             println(ANSI_BLUE + "Winner: " + ANSI_GREEN + "${it.winner.name}")
+            println()
         }
     }
 
