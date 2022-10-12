@@ -55,13 +55,25 @@ class PlayerView {
         player.fullName = readLine()!!
         print(ANSI_YELLOW + "Enter their Date of Birth : " + ANSI_RESET)
         player.dOB = readLine()!!
+
+        teamView.listTeams(teams)
         print(ANSI_YELLOW +"Choose who they play for: "+ ANSI_RESET)
-        player.playsFor = TeamModel()
-        // UPDATE
+        val searchId = teamView.getId("Choose")
+        val chosenTeam = search(searchId)
+        if (chosenTeam != null) {
+            player.playsFor = chosenTeam
+        } else {
+            println("Team not found")
+        }
 
         return player.fullName.isNotEmpty() &&
                 player.dOB.isNullOrEmpty() &&
                 player.playsFor != null
+    }
+
+    fun search(id: Long) : TeamModel? {
+        val foundTeam = teams.findOne(id)
+        return foundTeam
     }
 
     fun updatePlayerData(player : PlayerModel) : Boolean {
@@ -77,7 +89,15 @@ class PlayerView {
             print(ANSI_YELLOW + "Enter a new win total for [ " + player.dOB + " ] : " + ANSI_RESET)
             tempDOB = readLine()!!
             print(ANSI_YELLOW + "Enter a new win total for [ " + player.playsFor + " ] : " + ANSI_RESET)
-            tempPlaysFor = TeamModel(0,"Default Team",0,0,0, arrayListOf())
+
+            print(ANSI_YELLOW +"Choose who they play for: "+ ANSI_RESET)
+            val searchId = teamView.getId("Choose")
+            val chosenTeam = search(searchId)
+            if (chosenTeam != null) {
+                player.playsFor = chosenTeam
+            } else {
+                println("Team not found")
+            }
 
             if (!tempFullName.isNullOrEmpty() && !tempDOB.isNullOrEmpty() && tempPlaysFor != null) {
                 player.fullName = tempFullName
