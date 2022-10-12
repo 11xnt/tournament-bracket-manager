@@ -92,17 +92,15 @@ class PlayerView {
 
             print(ANSI_YELLOW +"Choose who they play for: "+ ANSI_RESET)
             val searchId = teamView.getId("Choose")
-            val chosenTeam = search(searchId)
-            if (chosenTeam != null) {
-                player.playsFor = chosenTeam
-            } else {
+            val tempChosenTeam = search(searchId)
+            if (tempChosenTeam == null) {
                 println("Team not found")
             }
 
-            if (!tempFullName.isNullOrEmpty() && !tempDOB.isNullOrEmpty() && tempPlaysFor != null) {
+            if (!tempFullName.isNullOrEmpty() && !tempDOB.isNullOrEmpty() && tempChosenTeam != null) {
                 player.fullName = tempFullName
                 player.dOB = tempDOB
-                player.playsFor = tempPlaysFor
+                player.playsFor = tempChosenTeam
                 return true
             }
         }
